@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TWCS Redirect</title>
+        <link rel="stylesheet" type="text/css" href="https://dreamerslegacy.xyz/css/schema.min.css" referrerpolicy="noreferrer">
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='mon.js') }}"></script>
+        <div class="schema">
+            <!-- warning displayed only when JavaScript is disabled -->
+            <noscript class="message-box-container">
+                <div class="message-box">
+                    <h2>Warning!</h2>
+                    <p style="color: #ff4545;">JavaScript is required for TWCS to broadcast when the referrer is online again.</p>
+                </div>
+            </noscript>
+            <div style="display: flex;">
+                <div style="justify-content: center;">
+                    <h1>Waiting for Host</h1>
+                    <h2>URL: {{ referrer }}</h2>
+                </div>
+            </div>
+            <div class="message-box-container">
+                <div class="message-box" style="padding-left: 10%; padding-right: 10%;">
+                    <p>You were redirected here after the original host went down, likely for a server restart.</p>
+                    <p>Please wait until the original host is back up. You will be automaticall redirected.</p>
+                    <p>ETA: <span id="eta"></span></p>
+                </div>
+            </div>
+            <p class="hint">// If you aren't redirected back in a timely manner, the origin host may be down permanently or TWCS may have been given an invalid referrer.</p>
+        </div>
+    </body>
+</html>
