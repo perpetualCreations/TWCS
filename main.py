@@ -44,9 +44,9 @@ def eta_request_handler(json_payload) -> None:
     """
     json_payload = json.loads(str(json_payload).replace("'", '"'))
     flask_socketio.emit("postETA",
-                        {eta_database.cursor().execute(
+                        {"eta": eta_database.cursor().execute(
                             "SELECT * FROM eta WHERE referrer=:ref",
-                            {"ref": flask.request.referrer}).fetch()[2]})
+                            {"ref": json_payload["referrer"]}).fetch()[2]})
 
 
 @socket_io.on("revealFate")

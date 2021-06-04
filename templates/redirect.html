@@ -25,9 +25,17 @@
             </div>
             <div class="message-box-container">
                 <div class="message-box" style="padding-left: 10%; padding-right: 10%;">
-                    <p>You were redirected here after the original host went down, likely for a server restart.</p>
-                    <p>Please wait until the original host is back up. You will be automaticall redirected.</p>
-                    <p>ETA: <span id="eta"></span></p>
+                    <div id="wait-message">
+                        <p>You were redirected here after the original host went down, likely for a server restart.</p>
+                        <p>Please wait until the original host is back up. You will be automaticall redirected.</p>
+                        <p>ETA: <span id="eta"></span></p>
+                    </div>
+                    <div id="error-message" style="display: none;">
+                        <h3 style="color: #ff4545;">Error</h3>
+                        <p>Host timed out, maximum retries exceeded.</p>
+                        <p>The original host is probably unavailable, disabled permanently or for a prolonged duration.</p>
+                        <p>You are recommended to take appropriate action. Automatic redirect will not occur.</p>
+                    </div>
                 </div>
             </div>
             <p class="hint">// If you aren't redirected back in a timely manner, the origin host may be down permanently or TWCS may have been given an invalid referrer.</p>
