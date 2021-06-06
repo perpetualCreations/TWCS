@@ -77,6 +77,7 @@ def check(url: str) -> None:
     :param url: URL to referrer
     :type url: str
     """
+    first_pass = True
     pings = 0
     if "http" != url[:4]:
         url = "http://" + url
@@ -87,6 +88,9 @@ def check(url: str) -> None:
         except Exception:
             status = None
         if status in (list(range(200, 227)) + [302, 401]):
+            if first_pass is True:
+                sleep(int(config["CORE"]["DELAY_INITIAL"]))
+                first_pass = False
             exit_time = time() - init_time
             eta_data = eta_database.cursor().execute(
                 "SELECT * FROM eta WHERE referrer=:ref",
@@ -106,6 +110,7 @@ def check(url: str) -> None:
                 pings >= int(config["CORE"]["PING_MAX"]):
             fate_broadcaster(False, url)
             break
+        first_pass = False
         sleep(int(config["CORE"]["DELAY_PING"]))
 
 
