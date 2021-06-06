@@ -1,4 +1,4 @@
-# FORESIGHT
+# TWCS
 [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 
 Flask web application for temporarily hosting redirected clients before a service restart/outage, before returning them to their referrer service after it is back online.
