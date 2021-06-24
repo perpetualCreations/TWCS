@@ -4,17 +4,17 @@ Temporary Web Captive Service.
 Made by perpetualCreations
 """
 
-import flask
-import flask_socketio
 import configparser
 import threading
-import requests
 import json
 import sqlite3
 from os import urandom
 from os.path import isfile
 from ast import literal_eval
 from time import sleep, time
+import flask
+import flask_socketio
+import requests
 
 config = configparser.ConfigParser()
 config.read("main.cfg")
@@ -29,8 +29,7 @@ if not isfile("eta.db"):
     eta_database.cursor().execute('''CREATE TABLE eta (
     nid INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     referrer VARCHAR(2000) NOT NULL,
-    eta INT DEFAULT NULL
-);''')
+    eta INT DEFAULT NULL);''')
 else:
     eta_database = sqlite3.connect("eta.db")
 
@@ -79,10 +78,11 @@ def check(url: str) -> None:
     """
     first_pass = True
     pings = 0
-    if "http" != url[:4]:
+    if url[:4] != "http":
         url = "http://" + url
     init_time = time()
     while True:
+        # pylint: disable=broad-except
         try:
             status = requests.get(url).status_code
         except Exception:
